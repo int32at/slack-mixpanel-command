@@ -1,5 +1,5 @@
 # slack-mixpanel-command
-Allows you to retrieve your mixpanel users within slack!
+Allows you to retrieve your Mixpanel users within Slack!
 
 ![screenshot](https://cloud.githubusercontent.com/assets/2839279/11114600/29d29f8c-8926-11e5-85d7-6ff26fbd2f86.png)
 
