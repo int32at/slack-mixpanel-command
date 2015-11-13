@@ -105,7 +105,7 @@
                 ));
             }
 
-            return sprintf($this->msg["country_users"], $response->total, $country);
+            return sprintf($this->msg["country_users"], $response->results, $country);
         }
 
         ////////////////// HELPERS //////////////////
