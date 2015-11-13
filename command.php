@@ -78,8 +78,8 @@
 
         private function getCurrentUsers($mp)
         {
-            $response = $mp->request(array("engage"), array());
-            return sprintf($this->msg["current_users"], $response->total);
+            $response = $mp->request(array("engage/stats"), array());
+            return sprintf($this->msg["current_users"], $response->results);
         }
 
         private function getLastSeenUsers($mp, $time)
@@ -88,11 +88,11 @@
             $lastSeen = date("c", strtotime("-" . $time));
             $lastSeen = explode("+", $lastSeen)[0];
 
-            $response = $mp->request(array("engage"), array(
-                "where" => 'properties["$last_seen"] >= "'. $lastSeen . '"'
+            $response = $mp->request(array("engage/stats"), array(
+                "selector" => 'properties["$last_seen"] >= "'. $lastSeen . '"'
             ));
 
-            return sprintf($this->msg["lastseen_users"], $response->total, $time);
+            return sprintf($this->msg["lastseen_users"], $response->results, $time);
         }
 
         private function getUsersPerCountry($mp, $country)
@@ -100,8 +100,8 @@
             if(strlen($country) == 0) {
                 return $this->msg["country_users_not_selected"];
             } else {
-                $response = $mp->request(array("engage"), array(
-                    "where" => 'properties["$country_code"] == "'. $country . '"'
+                $response = $mp->request(array("engage/stats"), array(
+                    "selector" => 'properties["$country_code"] == "'. $country . '"'
                 ));
             }
 
